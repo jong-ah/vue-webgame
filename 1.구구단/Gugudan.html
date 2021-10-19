@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구구단</title>
+    <!-- https://kr.vuejs.org/v2/guide/ -->
+    <!-- vue.js 적용하기 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- data를 텍스트에 적용하기 -->
+      <div>{{first}}곱하기 {{second}}는?</div>
+      <form v-on:submit="onSubmitForm">
+        <input type="number" ref="answer" v-model="value" />
+        <button type="submit">입력</button>
+      </form>
+      <div id="result">{{result}}</div>
+      <!-- 정답인 수 보여줌 -->
+      <div id="count">{{count}}</div>
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el: '#root',
+      // 바뀌는 부분 Data
+      // react는 state를 선언한다.
+      data: {
+        first: Math.ceil(Math.random() * 9),
+        second: Math.ceil(Math.random() * 9),
+        value: '',
+        result: '결과',
+        count: 0,
+      },
+      methods: {
+        onSubmitForm(e) {
+          // form이 기본으로 하는 새로고침을 없애기 위해서 preventDEfault를 쓴다.
+          e.preventDefault();
+          if (this.first * this.second === parseInt(this.value)) {
+            this.result = '정답';
+            this.first = Math.ceil(Math.random() * 9);
+            this.second = Math.ceil(Math.random() * 9);
+            this.value = '';
+            this.$refs.answer.focus();
+            this.count++;
+          } else {
+            this.result = '땡';
+            this.value = '';
+            this.$refs.answer.focus();
+          }
+        },
+      },
+    });
+  </script>
+</html>

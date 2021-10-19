@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>좋아요</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div v-if="liked">좋아요 눌렀음</div>
+      <div v-if="!liked">좋아요 안 눌렀음</div>
+      <button v-if="liked" v-on:click="onClickFalse">unlike</button>
+      <button v-if="!liked" v-on:click="onClickButton">like</button>
+      <!-- v-if v-else 형제인데 떨어지면 이상하다 -->
+      <!-- 떨어져도 이상하지 않게 v-else를 v-if="!liked"로 바꾸었다. -->
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el: '#root',
+      data: {
+        // 데이터 중심으로 사고해야한다.
+        liked: false,
+      },
+      methods: {
+        onClickButton() {
+          this.liked = true;
+        },
+        onClickFalse() {
+          this.liked = false;
+        },
+      },
+    });
+  </script>
+</html>

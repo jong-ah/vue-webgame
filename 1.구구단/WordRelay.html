@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>끝말잇기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div>{{word}}</div>
+      <form v-on:submit="onSubmitForm">
+        <input
+          type="text"
+          ref="answer"
+          v-model="value"
+          placeholder="위의 단어를 끝말잇기하세요"
+        />
+        <button type="submit">입력</button>
+      </form>
+      <div>{{result}}</div>
+    </div>
+  </body>
+  <script>
+    // vue한테 태그 통제권을 넘긴다.
+    // 기본적으로 데이터와 메소드가 있다.
+    const app = new Vue({
+      el: '#root',
+      data: {
+        word: '끝말잇기',
+        result: '',
+        value: '',
+      },
+      methods: {
+        onSubmitForm(e) {
+          e.preventDefault();
+          // 두글자 입력하게 했다.
+          if (
+            this.word[this.word.length - 1] === this.value[0] &&
+            this.value.length > 1
+          ) {
+            this.result = '딩동댕';
+            this.word = this.value;
+            this.value = '';
+            this.$refs.answer.focus();
+          } else {
+            this.result = '땡';
+            this.value = '';
+            this.$refs.answer.focus();
+          }
+        },
+      },
+    });
+  </script>
+</html>
