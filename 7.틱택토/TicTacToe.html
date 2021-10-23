@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>틱택토</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 이차원 배열 다루기 -->
+    <!-- table전체가 다시 그려지지 않고, 한 칸만 렌더되게 여러 컴포너트로 나눴다-->
+    <!-- 부모, 자식 계속 넘기는거 다음에 알려준다. useContext,redux같은 것이 있나보다 -->
+    <!-- this.$root.$data와 같이 자식 컴포너틑가 부모 컴포너트를 조작할 수 있다 -->
+    <!-- this.$set(this.tableData[1], 0, 'X'); 배열에서 재할당할 땐 set를 사용한다 -->
+    <script src="./dist/app.js"></script>
+  </body>
+</html>
