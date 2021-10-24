@@ -86,9 +86,9 @@ export default {
       // 참조값이라서 구별되지 않지만, 현재값 예전값이 보여준다
       // 원시타입이면 구분이 잘 된다
       console.log(val, oldVal);
-      if (val.length === 0) {
-        console.log('변수의 값을 감시한다. bonus 값이 바꿨다');
-      }
+      // if (val.length === 0) {
+      //   console.log('변수의 값을 감시한다. bonus 값이 바꿨다');
+      // }
     },
   },
 };
